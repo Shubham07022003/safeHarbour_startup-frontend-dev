@@ -135,7 +135,7 @@ export default function AdminLogin() {
                   {touched.password && passwordError && (
                     <p className="text-sm text-red-500">{passwordError}</p>
                   )}
-                  <a className="text-sm text-neutral-600 hover:text-purple-500" href="#">
+                  <a className="text-sm text-neutral-600 hover:text-purple-500" href="/forgot">
                     Forgot Password?
                   </a>
                 </div>
