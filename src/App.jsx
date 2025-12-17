@@ -28,6 +28,8 @@ import ThanksCard from "./pages/ThanksCard";
 import { Home, AdminLogin } from "./pages";
 import { Navbar } from "./components";
 import { useEffect } from "react";
+import AboutUs from "./components/AboutUs";
+
 
 const AppContent = () => {
   const location = useLocation();
@@ -41,6 +43,7 @@ const AppContent = () => {
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/thanks" element={<ThanksCard />} />
+        <Route path="/about" element={<AboutUs/>}/>
 
       </Routes>
     </div>
