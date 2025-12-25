@@ -5,6 +5,7 @@ import LoginHero from '../assets/login 1.png';
 import Logo from '../assets/Logo.png';
 import { userLogin } from '../services/authServiceNew';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAuthStore } from '../store/auth-store';
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -12,6 +13,8 @@ export default function Login() {
   const [formValues, setFormValues] = useState({ email: '', password: '' });
   const [touched, setTouched] = useState({ email: false, password: false });
   const [submitting, setSubmitting] = useState(false);
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+  const toggleAuthState = useAuthStore((state) => state.toggleAuthState);
 
   // =========================
   // Frontend validation
@@ -62,6 +65,7 @@ export default function Login() {
 
       if (res?.message === 'Login successful') {
         toast.success('Login successful');
+        toggleAuthState(true);
         navigate('/');
         window.scrollTo(0, 0);
       }
