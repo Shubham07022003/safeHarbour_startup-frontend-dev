@@ -22,15 +22,10 @@
     "react-dom": "^19.2.0",
     "react-hook-form": "^7.69.0",
     "react-router-dom": "^7.10.1",
-<<<<<<< HEAD
-    "tailwindcss": "^4.1.17",
-    "zod": "^4.2.1"
-=======
     "react-toastify": "^11.0.5",
     "tailwindcss": "^4.1.17",
     "toast": "^0.5.4",
     "zustand": "^5.0.9"
->>>>>>> 46226548cb6aa7b9622231eff06e265da20a7a45
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
