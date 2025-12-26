@@ -18,11 +18,11 @@ import {
   Routes,
   Route,
   useLocation,
-} from "react-router-dom";
-import "./App.css";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import Signup from "./pages/Signup";
+} from 'react-router-dom';
+import './App.css';
+import AOS from 'aos';
+import { useEffect } from 'react';
+import 'aos/dist/aos.css';
 
 ////////////////////////////////////////
 //      Components & Page Imports     //
@@ -36,19 +36,48 @@ import CounsellorSignup from "./pages/counsellor-signup/CounsellorSignup";
 const AppContent = () => {
   const location = useLocation();
   const hideNavbar =
-    location.pathname === "/admin/login" ||
-    location.pathname === "/signup" ||
-    location.pathname === "/counsellor/signup";
+    location.pathname === '/admin/login' ||
+    location.pathname === '/signup' ||
+    location.pathname === '/counsellor/signup' ||
+    location.pathname === '/dashboard';
+
+  const isAuthenticated = useAuthStore((state) => state.authenticated);
+  const toggleAuthState = useAuthStore((state) => state.toggleAuthState);
+
+  //=== [DEBUG USE-EFFECT LOG] ===//
+  useEffect(() => {
+    console.log('[AUTH STATE]', isAuthenticated);
+  }, []);
 
   return (
     <div>
-      {!hideNavbar && <Navbar />}
+      <ToastContainer
+        position='top-right'
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        pauseOnHover
+        draggable
+        toastClassName={'toast-uppercase'}
+      />
+      {/* {!hideNavbar && <Navbar /> */}
+      {isAuthenticated ? <DashboardNavBar /> : !hideNavbar && <Navbar />}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/counsellor/signup" element={<CounsellorSignup />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/admin/login' element={<AdminLogin />} />
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/forgot' element={<ForgotPassword />} />
+        <Route path='/verify-otp/:emailId' element={<VerifyOTP />} />
+        <Route path='/reset-password/:emailId' element={<ResetPasswordOTP />} />
+        <Route path='/reset-password' element={<ResetPassword />} />
+        <Route path='/counsellor/signup' element={<CounsellorSignup />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/dashboard' element={<DashboardNavBar />} />
       </Routes>
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 };
