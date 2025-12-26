@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export function ThankYOu() {
   return (
     <div className="text-center w-[100vw] flex flex-col items-center justify-center gap-1">
@@ -33,7 +35,7 @@ export function ThankYOu() {
       </div>
       <p className="text-center text-gray-600 text-xs sm:text-sm  mt-2 sm:mt-1  cursor-default font-light  leading-[10px] text-black/54">
         <span className="text-[#8473E8] cursor-pointer underline underline-offset-2">
-          Back
+          <Link to={"/"}>Back</Link>
         </span>{" "}
         to Landing Page
       </p>

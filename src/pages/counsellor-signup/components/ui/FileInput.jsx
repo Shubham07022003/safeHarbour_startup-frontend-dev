@@ -7,7 +7,6 @@ export function FileInput({
   name,
   setValue,
   error,
-  register,
 }) {
   return (
     <div className="relative inline-block w-full">
@@ -41,9 +40,6 @@ export function FileInput({
       <p className="absolute right-0 -bottom-3.5 sm:-bottom-5 text-[10px] sm:text-xs font-semibold">
         *{fileType}
       </p>
-
-      {/* Error */}
-      {/* {error && <p className="text-red-500 text-[10px] sm:text-xs ">{error}</p>} */}
     </div>
   );
 }

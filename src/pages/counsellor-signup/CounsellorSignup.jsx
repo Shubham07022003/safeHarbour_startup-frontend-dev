@@ -3,12 +3,12 @@ import React, { useState } from "react";
 
 import "react-datepicker/dist/react-datepicker.css";
 import { FormProvider, useForm } from "react-hook-form";
-import { StepOne } from "./components/StepOne";
-import { StepTwo } from "./components/StepTwo";
-import { StepThree } from "./components/StepThree";
-import { ThankYOu } from "./components/ThankYou";
-import { StepFive } from "./components/StepFive";
-import { StepFour } from "./components/StepFour";
+import { StepOne } from "./components/forms/StepOne";
+import { StepTwo } from "./components/forms/StepTwo";
+import { StepThree } from "./components/forms/StepThree";
+import { ThankYOu } from "./components/forms/ThankYou";
+import { StepFive } from "./components/forms/StepFive";
+import { StepFour } from "./components/forms/StepFour";
 import { counsellorSignupSchema } from "./schema/counsellor.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -50,17 +50,9 @@ export default function CounsellorSignup() {
       "password",
       "timezone",
     ],
-    2: [
-      "counselling_type",
-      "specialties",
-      "years_experience",
-      "bio",
-      "availability",
-      "hourly_rate",
-      "session_type",
-    ],
-    3: ["someStep3Fields"],
-    4: ["someStep4Fields"],
+    2: ["counselling_type", "specialties", "years_experience", "bio"],
+    3: ["availability", "hourly_rate"],
+    4: ["session_type"],
     5: [
       "profile_picture",
       "licence",
@@ -76,7 +68,7 @@ export default function CounsellorSignup() {
     const isValid = await trigger(fields);
     if (!isValid) return;
 
-    setStep((prev) => Math.min(prev + 1, 5));
+    setStep((prev) => Math.min(prev + 1));
   };
 
   const prevStep = () => {
@@ -107,21 +99,21 @@ export default function CounsellorSignup() {
       }
     });
 
-    // try {
-    //   const res = await fetch("http://localhost:5000/api/counsellor/signup", {
-    //     method: "POST",
-    //     body: formData,
-    //   });
+    try {
+      const res = await fetch("http://localhost:5000/api/counsellor/signup", {
+        method: "POST",
+        body: formData,
+      });
 
-    //   const result = await res.json();
+      const result = await res.json();
 
-    //   if (!res.ok) throw new Error(result.msg);
+      if (!res.ok) throw new Error(result.msg);
 
-    //   setSubmitted(true);
-    // } catch (err) {
-    //   console.error(err);
-    //   alert(err.message);
-    // }
+      setSubmitted(true);
+    } catch (err) {
+      console.error(err);
+      alert(err.message);
+    }
   };
 
   return (

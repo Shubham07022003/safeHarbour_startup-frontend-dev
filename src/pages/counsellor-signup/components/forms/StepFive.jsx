@@ -1,34 +1,19 @@
 import { useFormContext } from "react-hook-form";
-import { FileInput } from "../FileInput";
-import FormHeader from "../FormHeader";
-import { ButtonCallToAction } from "../../../components";
+import { FileInput } from "../ui/FileInput";
+import FormHeader from "../ui/FormHeader";
+import { ButtonCallToAction } from "../../../../components";
 
 export function StepFive({ prevStep }) {
   const {
     setValue,
-    trigger,
     formState: { errors },
   } = useFormContext();
 
-  const handleNext = async () => {
-    const isValid = await trigger([
-      "profile_picture",
-      "additional_documents",
-      "government_id",
-      "experince_letter",
-      "qualification_certificates",
-      "licence",
-    ]);
-
-    if (!isValid) return;
-    // 🔥 This triggers parent onSubmit
-    document.querySelector("form").requestSubmit();
-  };
   return (
     <>
       <FormHeader title="Documents" step={5} prevStep={prevStep} />
 
-      <div className="flex justify-between flex-col  h-[220px] sm:h-[270px]">
+      <div className="flex justify-between flex-col  h-[230px] sm:h-[295px]">
         <div
           className={`grid grid-cols-2 gap-x-[15.5px] sm:gap-x-[60px] ${
             errors.profile_picture || errors.government_id || errors.licence
@@ -132,11 +117,7 @@ export function StepFive({ prevStep }) {
         </p>
       </div>
       <div className="flex flex-col items-center gap-[28px] gap-2 mt-4">
-        <ButtonCallToAction
-          type="submit"
-          content="Continue"
-          handlClick={handleNext}
-        />
+        <ButtonCallToAction type="submit" content="Continue" />
       </div>
     </>
   );

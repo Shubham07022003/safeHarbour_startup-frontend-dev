@@ -1,39 +1,17 @@
 import { useFormContext } from "react-hook-form";
-import { stepFourSchema } from "../schema/counsellor.schema";
-import FormHeader from "../FormHeader";
-import CustomDropdown from "../SelectInput";
-import { ButtonCallToAction } from "../../../components";
+import FormHeader from "../ui/FormHeader";
+import CustomDropdown from "../ui/SelectInput";
+import { ButtonCallToAction } from "../../../../components";
 
 export function StepFour({ nextStep, prevStep }) {
   const {
     setValue,
     watch,
-    // getValues,
-    // setError,
-    // clearErrors,
-    trigger,
+
     formState: { errors },
   } = useFormContext();
 
   const handleNext = async () => {
-    // clearErrors();
-
-    // const stepFourData = {
-    //   session_type: getValues("session_type"),
-    // };
-    // const result = stepFourSchema.safeParse(stepFourData);
-
-    // if (!result.success) {
-    //   result.error.issues.forEach((err) => {
-    //     setError(err.path[0], { message: err.message });
-    //   });
-    //   return;
-    // }
-
-    const isValid = await trigger(["session_type"]);
-
-    if (!isValid) return;
-
     nextStep();
   };
 
@@ -46,7 +24,7 @@ export function StepFour({ nextStep, prevStep }) {
         prevStep={prevStep}
       />
 
-      <div className="flex justify-between flex-col  h-[220px] sm:h-[270px]">
+      <div className="flex justify-between flex-col  h-[230px] sm:h-[295px]">
         <div className="grid  gap-y-[5px] sm:gap-y-[10px]">
           <CustomDropdown
             placeholder="Session Type"

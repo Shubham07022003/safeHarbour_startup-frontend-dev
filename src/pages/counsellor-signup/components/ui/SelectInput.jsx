@@ -123,14 +123,14 @@ export default function CustomDropdown({
   }, []);
 
   return (
-    <div className={`flex flex-col ${width}`} ref={wrapperRef}>
+    <div className={`flex flex-col ${width} relative `} ref={wrapperRef}>
       {/* Trigger */}
       <button
         type="button"
         disabled={disabled}
         aria-invalid={!!error}
         onClick={() => setOpen((prev) => !prev)}
-        className={`w-full px-2.5 py-[5px] text-xs sm:text-sm sm:px-3 sm:py-2
+        className={`w-full px-2.5 py-[5px] text-xs sm:text-sm sm:px-3 sm:py-2 
           border rounded-lg flex items-center justify-between
           focus:ring-2
           ${
@@ -165,7 +165,7 @@ export default function CustomDropdown({
 
       {/* Options */}
       {open && !disabled && (
-        <div className="absolute z-20 mt-2 w-full p-2 max-h-[180px] overflow-auto rounded-3xl border border-[#8473E8] bg-white shadow-lg">
+        <div className="absolute z-20 mt-8 sm:mt-10  w-full   p-2 max-h-[180px] overflow-auto rounded-3xl border border-[#8473E8] bg-white shadow-lg">
           {options.map((opt, index) => {
             const isSelected = opt === value;
             return (
@@ -175,7 +175,7 @@ export default function CustomDropdown({
                   onChange(opt);
                   setOpen(false);
                 }}
-                className={`px-4 py-1.5 cursor-pointer text-sm truncate flex justify-between items-center
+                className={`px-4 py-1.5 cursor-pointer text-xs sm:text-sm truncate flex justify-between items-center
                   ${
                     isSelected
                       ? "bg-[#8473E8] text-white rounded-2xl"

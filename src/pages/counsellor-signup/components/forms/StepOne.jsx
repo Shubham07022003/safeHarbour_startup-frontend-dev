@@ -1,73 +1,26 @@
 import { useFormContext } from "react-hook-form";
-import InputField from "../InputField";
-import FormHeader from "../FormHeader";
-import CustomDropdown from "../SelectInput";
-import { ButtonCallToAction } from "../../../components";
-// import { stepOneSchema } from "../schema/counsellor.schema";
-// import { CloudHail } from "lucide-react";
+import InputField from "../ui/InputField";
+import FormHeader from "../ui/FormHeader";
+import CustomDropdown from "../ui/SelectInput";
+import { ButtonCallToAction } from "../../../../components";
 
 export function StepOne({ nextStep }) {
   const {
     register,
     setValue,
     watch,
-    // getValues,
-    // setError,
-    // clearErrors,
-    // trigger,
+
     formState: { errors },
   } = useFormContext();
 
   const handleNext = async () => {
-    // console.log("HANDLE NEXT CALLED");
-    // clearErrors();
-
-    // const stepOneData = {
-    //   fullname: getValues("fullname"),
-    //   dob: getValues("dob"),
-    //   phone_number: getValues("phone_number"),
-    //   gender: getValues("gender"),
-    //   email: getValues("email"),
-    //   languages: getValues("languages"),
-    //   password: getValues("password"),
-    //   timezone: getValues("timezone"),
-    // };
-
-    // const result = stepOneSchema.safeParse(stepOneData);
-    // console.log(getValues());
-
-    // console.log("ZOD RESULT:", result);
-
-    // if (!result.success) {
-    //   result.error.issues.forEach((err) => {
-    //     setError(err.path[0], {
-    //       type: "manual",
-    //       message: err.message,
-    //     });
-    //   });
-    //   return;
-    // }
-
-    // const isValid = await trigger([
-    //   "fullname",
-    //   "dob",
-    //   "phone_number",
-    //   "gender",
-    //   "email",
-    //   "languages",
-    //   "password",
-    //   "timezone",
-    // ]);
-
-    // if (!isValid) return;
-
     nextStep();
   };
 
   return (
     <>
       <FormHeader nextStep={nextStep} />
-      <div className="flex justify-between flex-col h-[220px] sm:h-[270px]">
+      <div className="flex justify-between flex-col h-[230px] sm:h-[295px]">
         <div className="grid grid-cols-2 gap-x-[30.5px] sm:gap-x-[60px] gap-y-[5px] sm:gap-y-[10px]">
           <InputField
             placeholder="Full Name"

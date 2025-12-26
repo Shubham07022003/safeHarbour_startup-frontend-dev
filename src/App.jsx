@@ -31,7 +31,7 @@ import Signup from "./pages/Signup";
 import { Home, AdminLogin } from "./pages";
 import { Navbar } from "./components";
 import { useEffect } from "react";
-import CounsellorSignup from "./pages/counserlor-signup/CounsellorSignup";
+import CounsellorSignup from "./pages/counsellor-signup/CounsellorSignup";
 
 const AppContent = () => {
   const location = useLocation();

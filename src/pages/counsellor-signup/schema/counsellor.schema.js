@@ -7,6 +7,7 @@ export const stepOneSchema = z.object({
   fullname: z.string().min(2, "Full name required"),
   dob: z
     .string()
+    .min(1, "Date of Birth is required")
     .refine((val) => new Date(val) <= new Date(), "DOB cannot be future"),
   phone_number: z
     .string()
