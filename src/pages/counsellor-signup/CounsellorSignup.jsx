@@ -1,5 +1,5 @@
-import { MoveLeft, Paperclip } from 'lucide-react';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 // import "react-datepicker/dist/react-datepicker.css";
 import { FormProvider, useForm } from 'react-hook-form';
@@ -179,7 +179,7 @@ export default function CounsellorSignup() {
               </FormProvider>
               <p className='text-center text-gray-600 text-xs sm:text-sm  mt-2 sm:mt-1  md:mt-3 cursor-default font-light pb-1 leading-[10px] text-black/54'>
                 <span className='text-[#8473E8] cursor-pointer underline   underline-offset-2'>
-                  Back
+                  <Link to='/'>Back</Link>
                 </span>{' '}
                 to Landing Page
               </p>
