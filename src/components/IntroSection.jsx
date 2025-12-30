@@ -1,7 +1,7 @@
 
 import { ArrowRight } from 'lucide-react';
 
-const CTA_Section = ({ onGetStarted }) => {
+const IntroSection = ({ onGetStarted }) => {
   return (
     //  Added consistent horizontal padding (px-4 sm:px-6) for safety margins on mobile
     <div className=" fixed inset-0  z-50 min-h-screen flex flex-col items-center justify-center bg-white px-4 sm:px-6">
@@ -36,4 +36,4 @@ const CTA_Section = ({ onGetStarted }) => {
   );
 };
 
-export default CTA_Section;
+export default IntroSection;
